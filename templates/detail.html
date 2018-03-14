@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+        easyCompras
     </title>
 
     <meta name="keywords" content="">
@@ -34,35 +34,71 @@
 
     <script src="../static/js/respond.min.js"></script>
 
-    <link rel="shortcut icon" href="favicon.png">
-
 
 
 </head>
 
 <body>
-    <!-- *** NAVBAR ***
+   <!-- *** NAVBAR ***
  _________________________________________________________ -->
 
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                    <img src="../static/img/logo.png" alt="Obaju logo" class="hidden-xs">
-                    <img src="../static/img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">easyCompras - ir al inicio</span>
+                <a class="navbar-brand home" href="/" data-animate-hover="bounce">
+                    <img src="../static/img/logo-easycompras.png" alt="EasyCompras logo" class="hidden-xs">
                 </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
             </div>
             <!--/.navbar-header -->
 
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.html">Inicio</a>
+                    <li class="active"><a href="/">Inicio</a>
                     </li>
                 </ul>
 
             </div>
+            <!--/.nav-collapse -->
+
+            <div class="navbar-buttons">
+                <!--/.nav-collapse -->
+
+                <div class="navbar-collapse collapse right" id="search-not-mobile">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+
+		    </span>
+                    </div>
+                </form>
+
+            </div>
+            <!--/.nav-collapse -->
 
         </div>
         <!-- /.container -->
@@ -75,63 +111,56 @@
 
         <div id="content">
             <div class="container">
+                {% if producto %}
+                    <div class="col-md-9">
 
-                <div class="col-md-9">
+                        <div class="row" id="productMain">
+                            <div class="col-sm-6">
+                                <div id="mainImage">
+                                    <img src="../static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
+                                </div>
 
-                    <div class="row" id="productMain">
-                        <div class="col-sm-6">
-                            <div id="mainImage">
-                                <img src="../static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="box">
+                                    <h1 class="text-center">{{producto.nombre}}</h1>
+                                    </p>
+                                    <p class="price">Precio más bajo es de {{producto.proveedor_precio}}: ${{producto.precio}}</p>
+
+
+                                    {% for almacen, precio, disponibilidad in zip(producto.proveedores, producto.precios, producto.disponibilidades) %}
+                                        <img class="img-responsive" src="../static/img/logo-{{almacen}}.png" alt="" style="max-height: 25px; max-width: 25px;"> 
+                                        <p>Precio {{almacen}}: ${{precio}}</p>
+                                        <p>Disponibilidad {{almacen}}: {{disponibilidad}} unidades</p>    
+
+                                    {% endfor %}
+                                                             
+                                    
+                                </div>
                             </div>
 
                         </div>
-                        <div class="col-sm-6">
-                            <div class="box">
-                                <h1 class="text-center">{{producto.nombre}}</h1>
-                                <p class="goToDescription"><a href="#details" class="scroll-to">{{producto.descripcion}}</a>
-                                </p>
-                                <p class="price">${{producto.precio}}</p>
-                                <p class="price">Disponibilidad Exito: {{producto.disponibilidad_exito}}</p>
-                                <p class="price">Disponibilidad Carulla: {{producto.disponibilidad_carulla}}</p>
-                                
-                            </div>
+
+                        <div class="box" id="details">
+                            <p>
+                                <h4>Detalles del producto</h4>
+                                <p>{{producto.descripcion}}</p>
+                                <hr>
+                                <div class="social">
+                                    <h4>Muéstraselo a tus amigos</h4>
+                                    <p>
+                                        <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                        <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                                        <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                                    </p>
+                                </div>
                         </div>
 
                     </div>
-
-                    <div class="box" id="details">
-                        <p>
-                            <h4>Product details</h4>
-                            <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                            <h4>Material & care</h4>
-                            <ul>
-                                <li>Polyester</li>
-                                <li>Machine wash</li>
-                            </ul>
-                            <h4>Size & Fit</h4>
-                            <ul>
-                                <li>Regular fit</li>
-                                <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                            </ul>
-
-                            <blockquote>
-                                <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-                                </p>
-                            </blockquote>
-
-                            <hr>
-                            <div class="social">
-                                <h4>Muéstraselo a tus amigos</h4>
-                                <p>
-                                    <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                                </p>
-                            </div>
-                    </div>
-
-                </div>
+                {% else %}
+                    Producto no encontrado.
+                {% endif %}
                 <!-- /.col-md-9 -->
             </div>
             <!-- /.container -->
