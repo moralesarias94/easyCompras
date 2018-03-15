@@ -15,19 +15,19 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
 
     <!-- styles -->
-    <link href="../static/css/font-awesome.css" rel="stylesheet">
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/animate.min.css" rel="stylesheet">
-    <link href="../static/css/owl.carousel.css" rel="stylesheet">
-    <link href="../static/css/owl.theme.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/animate.min.css" rel="stylesheet">
+    <link href="/static/css/owl.carousel.css" rel="stylesheet">
+    <link href="/static/css/owl.theme.css" rel="stylesheet">
 
     <!-- theme stylesheet -->
-    <link href="../static/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="/static/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
     <!-- your stylesheet with modifications -->
-    <link href="../static/css/custom.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
 
-    <script src="../static/js/respond.min.js"></script>
+    <script src="/static/js/respond.min.js"></script>
 
 
 
@@ -42,7 +42,7 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand home" href="/" data-animate-hover="bounce">
-                    <img src="../static/img/logo-easycompras.png" alt="EasyCompras logo" class="hidden-xs">
+                    <img src="/static/img/logo-easycompras.png" alt="EasyCompras logo" class="hidden-xs">
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -83,12 +83,10 @@
 
                 <form class="navbar-form" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" id="busqueda" class="form-control" placeholder="Buscar">
                         <span class="input-group-btn">
-
-			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-
-		    </span>
+			                <button id="boton-busqueda" class="btn btn-primary"><i class="fa fa-search"></i></button>
+		                </span>
                     </div>
                 </form>
 
@@ -112,19 +110,19 @@
                         <div class="row" id="productMain">
                             <div class="col-sm-6">
                                 <div id="mainImage">
-                                    <img src="../static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
+                                    <img src="/static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
                                 </div>
 
                             </div>
                             <div class="col-sm-6">
                                 <div class="box">
-                                    <h1 class="text-center">{{producto.nombre}}</h1>
+                                    <h1 class="text-center" style="text-transform: capitalize;">{{producto.nombre}}</h1>
                                     </p>
                                     <p class="price">Precio más bajo es de {{producto.proveedor_precio}}: ${{producto.precio}}</p>
 
 
                                     {% for almacen, precio, disponibilidad in zip(producto.proveedores, producto.precios, producto.disponibilidades) %}
-                                        <img class="img-responsive" src="../static/img/logo-{{almacen}}.png" alt="" style="max-height: 25px; max-width: 25px;"> 
+                                        <img class="img-responsive" src="/static/img/logo-{{almacen}}.png" alt="" style="max-height: 25px; max-width: 25px;"> 
                                         <p>Precio {{almacen}}: ${{precio}}</p>
                                         <p>Disponibilidad {{almacen}}: {{disponibilidad}} unidades</p>    
 
@@ -308,14 +306,15 @@
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
-    <script src="../static/js/jquery-1.11.0.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/jquery.cookie.js"></script>
-    <script src="../static/js/waypoints.min.js"></script>
-    <script src="../static/js/modernizr.js"></script>
-    <script src="../static/js/bootstrap-hover-dropdown.js"></script>
-    <script src="../static/js/owl.carousel.min.js"></script>
-    <script src="../static/js/front.js"></script>
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+    <script src="/static/js/busqueda.js"></script>
+    <script src="/static/js/waypoints.min.js"></script>
+    <script src="/static/js/modernizr.js"></script>
+    <script src="/static/js/bootstrap-hover-dropdown.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/front.js"></script>
 
 
 

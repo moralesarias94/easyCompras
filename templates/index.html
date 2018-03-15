@@ -12,22 +12,22 @@
 
     <meta name="keywords" content="">
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
 
     <!-- styles -->
-    <link href="./static/css/font-awesome.css" rel="stylesheet">
-    <link href="./static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./static/css/animate.min.css" rel="stylesheet">
-    <link href="./static/css/owl.carousel.css" rel="stylesheet">
-    <link href="./static/css/owl.theme.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/animate.min.css" rel="stylesheet">
+    <link href="/static/css/owl.carousel.css" rel="stylesheet">
+    <link href="/static/css/owl.theme.css" rel="stylesheet">
 
     <!-- theme stylesheet -->
-    <link href="./static/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="/static/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
     <!-- your stylesheet with modifications -->
-    <link href="./static/css/custom.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
 
-    <script src="./static/js/respond.min.js"></script>
+    <script src="/static/js/respond.min.js"></script>
 
 </head>
 
@@ -40,7 +40,7 @@
             <div class="navbar-header">
 
                 <a class="navbar-brand home" href="/" data-animate-hover="bounce">
-                    <img src="./static/img/logo-easycompras.png" alt="EasyCompras logo" class="hidden-xs">
+                    <img src="/static/img/logo-easycompras.png" alt="EasyCompras logo" class="hidden-xs">
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -81,12 +81,10 @@
 
                 <form class="navbar-form" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" id="busqueda" class="form-control" placeholder="Buscar">
                         <span class="input-group-btn">
-
-			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-
-		    </span>
+			                <button id="boton-busqueda" class="btn btn-primary"><i class="fa fa-search"></i></button>
+		                </span>
                     </div>
                 </form>
 
@@ -110,13 +108,13 @@
                 <div class="col-md-12">
                     <div id="main-slider" style="background-color: #ffffff">
                         <div class="item">
-                            <img src="./static/img/logo-exito.png" alt="" class="img-responsive" style="margin: 0 auto">
+                            <img src="/static/img/logo-exito.png" alt="" class="img-responsive" style="margin: 0 auto">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="./static/img/logo-carulla.png" alt="" style="margin: 0 auto">
+                            <img class="img-responsive" src="/static/img/logo-carulla.png" alt="" style="margin: 0 auto">
                         </div>
                         <div class="item">
-                            <img class="img-responsive" src="./static/img/logo-alkosto.png" alt="" style="margin: 0 auto">
+                            <img class="img-responsive" src="/static/img/logo-alkosto.png" alt="" style="margin: 0 auto">
                         </div>
                     </div>
                     <!-- /#main-slider -->
@@ -172,7 +170,7 @@
                                                 <div class="flipper">
                                                     <div class="front">
                                                         <a href="/detalle/{{producto.nombre}}">
-                                                            <img src="./static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
+                                                            <img src="/static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
                                                         </a>
                                                     </div>
                                                     <div class="back">
@@ -181,12 +179,12 @@
                                                 </div>
                                             </div>
                                             <a href="/detalle/{{producto.nombre}}" class="invisible">
-                                                <img src="./static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
+                                                <img src="/static/img/{{producto.direccion_img}}" alt="" class="img-responsive">
                                             </a>
                                             <div class="text">
-                                                <h3><a href="/detalle/{{producto.nombre}}">{{producto.nombre}}</a></h3>
+                                                <h3><a href="/detalle/{{producto.nombre}}" style="text-transform: capitalize;">{{producto.nombre}}</a></h3>
                                                 {% for almacen, precio, disponibilidad in zip(producto.proveedores, producto.precios, producto.disponibilidades) %}
-                                                    <img class="img-responsive" src="./static/img/logo-{{almacen}}.png" alt="" style="margin: 0 auto; max-height: 35px; max-width: 35px;"> 
+                                                    <img class="img-responsive" src="/static/img/logo-{{almacen}}.png" alt="" style="margin: 0 auto; max-height: 35px; max-width: 35px;"> 
                                                     <p class="price">${{precio}}</p>
 
                                                 {% endfor %}
@@ -384,14 +382,15 @@
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
-    <script src="./static/js/jquery-1.11.0.min.js"></script>
-    <script src="./static/js/bootstrap.min.js"></script>
-    <script src="./static/js/jquery.cookie.js"></script>
-    <script src="./static/js/waypoints.min.js"></script>
-    <script src="./static/js/modernizr.js"></script>
-    <script src="./static/js/bootstrap-hover-dropdown.js"></script>
-    <script src="./static/js/owl.carousel.min.js"></script>
-    <script src="./static/js/front.js"></script>
+    <script src="/static/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+    <script src="/static/js/busqueda.js"></script>
+    <script src="/static/js/waypoints.min.js"></script>
+    <script src="/static/js/modernizr.js"></script>
+    <script src="/static/js/bootstrap-hover-dropdown.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/front.js"></script>
 
 
 </body>

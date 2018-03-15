@@ -18,7 +18,7 @@ def index(nombre):
     url = 'https://easycompras-api.herokuapp.com/productos'
     params = None    
     if(nombre):
-        params = {'where' : json.dumps({'nombre': {"$regex": f".*{nombre}.*"}})}
+        params = {'where' : json.dumps({'nombre': {"$regex": f".*{nombre.lower()}.*"}})}
     productos = requests.get(url, params=params).json()
     return render_template('index.html', productos = productos['_items'])
 
