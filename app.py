@@ -12,13 +12,16 @@ def _zip(*args, **kwargs): #to not overwrite builtin zip in globals
 def home():
     return redirect(url_for('index'))
 
-@app.route('/inicio')
-def index():
+@app.route('/inicio', defaults={'nombre': None} ,methods=['GET'])
+@app.route('/inicio/<nombre>',methods=['GET'])
+def index(nombre):
     url = 'https://easycompras-api.herokuapp.com/productos'
-    productos = requests.get(url).json()
+    params = None    
+    if(nombre):
+        params = {'where' : json.dumps({'nombre': {"$regex": f".*{nombre}.*"}})}
+    productos = requests.get(url, params=params).json()
     return render_template('index.html', productos = productos['_items'])
 
-@app.route('/detalle', defaults={'nombre': None} ,methods=['GET'])
 @app.route('/detalle/<nombre>', methods=['GET'])
 def detail(nombre):
     url = 'https://easycompras-api.herokuapp.com/productos'
