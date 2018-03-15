@@ -18,7 +18,7 @@ def index():
     productos = requests.get(url).json()
     return render_template('index.html', productos = productos['_items'])
 
-
+@app.route('/detalle', defaults={'nombre': None} ,methods=['GET'])
 @app.route('/detalle/<nombre>', methods=['GET'])
 def detail(nombre):
     url = 'https://easycompras-api.herokuapp.com/productos'
